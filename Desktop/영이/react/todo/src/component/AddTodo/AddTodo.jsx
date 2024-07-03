@@ -7,7 +7,6 @@ export default function AddTodo({ onAdd }) {
   const handleChange = () => {
     const value = inputRef.current.value;
     setText(value);
-    console.log(value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,8 +17,8 @@ export default function AddTodo({ onAdd }) {
   };
 
   return (
-    <div onSubmit={handleSubmit}>
-      <form>
+    <div>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           ref={inputRef}
