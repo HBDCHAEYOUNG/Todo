@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import AddTodo from "../AddTodo/AddTodo";
 import Todo from "../Todo/Todo";
+import styles from "./TodoList.module.css";
 
-export default function TodoList() {
+export default function TodoList({ filter }) {
   const [todos, setTodos] = useState([
     { id: 0, text: "안녕하세요", status: "active" },
     { id: 1, text: "감사해요", status: "active" },
@@ -13,10 +14,11 @@ export default function TodoList() {
   const handleDelete = (deleted) =>
     setTodos((todos) => todos.filter((item) => item.id !== deleted.id));
 
+  const filtered = getFilteredItem(todos, filter);
   return (
-    <section>
-      <ul>
-        {todos.map((item) => (
+    <section className={styles.container}>
+      <ul className={styles.list}>
+        {filtered.map((item) => (
           <Todo
             key={item.id}
             todo={item}
@@ -28,4 +30,10 @@ export default function TodoList() {
       <AddTodo onAdd={handleAdd} />
     </section>
   );
+}
+
+// !function... 물어보기
+function getFilteredItem(todos, filter) {
+  if (filter === "all") return todos;
+  return todos.filter((t) => t.status === filter);
 }

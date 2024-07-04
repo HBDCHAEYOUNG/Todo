@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./AddTodo.module.css";
 
 export default function AddTodo({ onAdd }) {
   const [text, setText] = useState();
@@ -10,7 +11,8 @@ export default function AddTodo({ onAdd }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!inputRef.current.value) return;
+    if (!inputRef.current.value || inputRef.current.value.trim().length === 0)
+      return;
     //공백 제거 조건 예시 text.trim().length===0
     onAdd({ id: uuidv4(), text, status: "active" });
     inputRef.current.value = "";
@@ -18,14 +20,15 @@ export default function AddTodo({ onAdd }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
+          className={styles.input}
           type="text"
           ref={inputRef}
           placeholder="Add Text"
           onChange={handleChange}
         />
-        <button>Add</button>
+        <button className={styles.button}>Add</button>
       </form>
     </div>
   );
