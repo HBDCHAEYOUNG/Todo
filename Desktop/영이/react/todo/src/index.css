@@ -6,6 +6,14 @@
   --color-accent: hsl(247, 58%, 55%);
   --color-white: #fff;
 }
+
+html.dark {
+  --color-bg-dark: #14152a;
+  --color-bg: #27273a;
+  --color-grey: #22243b;
+  --color-text: #dad9d9;
+}
+
 body {
   margin: 0;
   width: 100vw;
