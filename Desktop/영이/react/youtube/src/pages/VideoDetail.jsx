@@ -1,5 +1,7 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 export default function VideoDetail() {
-  return <div>videoDetail</div>;
+  const { keyword } = useParams();
+  return <div>videos🔎{keyword}</div>;
 }
