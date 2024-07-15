@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import VideoCard from "../components/VideoCard";
+import FakeYoutube from "../api/fakeYoutube";
+import Youtube from "../api/youtube";
 
 export default function Videos() {
   const { keyword } = useParams();
@@ -10,19 +12,24 @@ export default function Videos() {
     data: videos,
   } = useQuery({
     queryKey: ["videos", keyword],
-    queryFn: async () => {
-      return fetch(
-        `videos/${keyword ? "keyword" : "popular"}`
-          .then((res) => res.json())
-          .then((data) => data.items)
-      );
+    queryFn: () => {
+      const youtube = new FakeYoutube();
+      return youtube.search(keyword);
     },
   });
 
   return (
     <div>
       videos
-      {keyword ? `🔎${keyword}` : "🔥"}
+      {isLoading && <p>로딩중..</p>}
+      {error && <p>에러 발생😲</p>}
+      {videos && (
+        <ul className="grid grid-cols-4 gap-5">
+          {videos.map((video) => (
+            <VideoCard key={video.id} video={video} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
