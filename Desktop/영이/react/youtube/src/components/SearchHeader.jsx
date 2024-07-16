@@ -19,16 +19,16 @@ export default function SearchHeader() {
 
   return (
     <header className="w-full text-2xl flex relative p-4 border-b border-zinc-600 items-center">
-      <Link to={"/"} className="text-4xl absolute left-4 flex items-center">
-        <TbBrandYoutubeFilled className="text-brand" />
-        <h1 className="px-2 font-bold text-3xl">YouTube</h1>
+      <Link to={"/"} className="text-4xl absolute left-4 flex items-center ">
+        <TbBrandYoutubeFilled className="text-brand " />
+        <h1 className="px-2 font-bold text-3xl hidden sm:flex">YouTube</h1>
       </Link>
       <form
         onSubmit={handleSubmit}
         className="flex w-2/5 mx-auto overflow-hidden ps-3 rounded bg-black"
       >
         <input
-          className="flex-1"
+          className="flex-1 min-w-0"
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
