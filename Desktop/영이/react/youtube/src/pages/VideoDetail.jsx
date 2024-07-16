@@ -26,7 +26,7 @@ export default function VideoDetail() {
           <pre>{description}</pre>
         </div>
       </article>
-      <section>
+      <section className="border border-2 p-10 bg-red-300">
         <RelatedVideos id={channelId} />
       </section>
     </section>
