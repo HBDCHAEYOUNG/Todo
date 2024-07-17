@@ -7,6 +7,7 @@ export default function VideoDetail() {
   const {
     state: { video },
   } = useLocation();
+
   const { title, channelId, channelTitle, description } = video.snippet;
 
   return (
@@ -26,7 +27,7 @@ export default function VideoDetail() {
           <pre>{description}</pre>
         </div>
       </article>
-      <section className="border border-2 p-10 bg-red-300">
+      <section className="border-2 p-10 bg-red-300">
         <RelatedVideos id={channelId} />
       </section>
     </section>

@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
-import { useYoutubeApi } from "../context/YoutubeApiContext";
 import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import { useYoutubeApi } from "../context/YoutubeApiContext";
 import VideoCard from "./VideoCard";
-import { flushSync } from "react-dom";
 
 export default function RelatedVideos({ id }) {
   const { youtube } = useYoutubeApi();
 
   const { data: videos } = useQuery({
     queryKey: ["videos", id],
-    queryFn: () => youtube.RelatedVideos(id),
+    queryFn: () => youtube.relatedVideos(id),
   });
-
+  console.log(id);
   return (
     <div>
       {videos && (

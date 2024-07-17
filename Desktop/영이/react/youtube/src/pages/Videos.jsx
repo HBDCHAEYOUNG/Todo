@@ -15,7 +15,6 @@ export default function Videos() {
     queryKey: ["videos", keyword],
     queryFn: () => youtube.search(keyword),
   });
-  console.log("dd", videos);
   return (
     <div>
       {isLoading && <p>로딩중..</p>}

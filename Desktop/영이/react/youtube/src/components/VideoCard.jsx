@@ -3,9 +3,9 @@ import { formatAgo } from "../utill/date";
 import { useNavigate } from "react-router-dom";
 
 export default function VideoCard({ video }) {
-  const navigate = useNavigate();
   const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
 
+  const navigate = useNavigate();
   return (
     <li
       className="cursor-pointer"
