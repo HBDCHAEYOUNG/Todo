@@ -4,20 +4,31 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./pages/error-page";
+
+import ErrorPage from "./pages/ErrorPage";
+import AllProducts from "./pages/AllProducts";
+import ProductDetail from "./pages/ProductDetail";
+import NewProduct from "./pages/NewProduct";
+import MyCart from "./pages/MyCart";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <AllProducts /> },
+      { path: "/product", element: <AllProducts /> },
+      { path: "/product/:productId", element: <ProductDetail /> },
+      { path: "/product/new", element: <NewProduct /> },
+      { path: "/carts", element: <MyCart /> },
+    ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
     <RouterProvider router={router} />
   </React.StrictMode>
 );
