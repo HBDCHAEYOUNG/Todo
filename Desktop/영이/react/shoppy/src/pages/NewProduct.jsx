@@ -74,7 +74,7 @@ export default function NewProduct() {
           onChange={handleChange}
         />
 
-        <Button text="제품 등록하기" />
+        <Button className="w-full" text="제품 등록하기" />
       </form>
     </section>
   );
