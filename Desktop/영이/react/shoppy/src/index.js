@@ -11,6 +11,7 @@ import ProductDetail from "./pages/ProductDetail";
 import NewProduct from "./pages/NewProduct";
 import MyCart from "./pages/MyCart";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <AllProducts /> },
+      { index: true, element: <Home /> },
       { path: "/product", element: <AllProducts /> },
       { path: "/product/:productId", element: <ProductDetail /> },
       {
