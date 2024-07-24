@@ -10,7 +10,7 @@ export default function Navbar() {
   const { user, login, logout } = useAuthContext();
   return (
     <header className="flex justify-between border-b border-gray-300 p-2">
-      <Link to="/" className="flex items-center text-4xl text-brand gap-1">
+      <Link to="/" className="flex items-center text-4xl text-brand gap-1 ">
         <AiTwotoneShop />
         <h1>Odidas</h1>
       </Link>
