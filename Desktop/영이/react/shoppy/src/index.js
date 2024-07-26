@@ -9,9 +9,9 @@ import ErrorPage from "./pages/ErrorPage";
 import AllProducts from "./pages/AllProducts";
 import ProductDetail from "./pages/ProductDetail";
 import NewProduct from "./pages/NewProduct";
-import MyCart from "./pages/MyCart";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import Home from "./pages/Home";
+import Carts from "./pages/Carts";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         path: "/carts",
         element: (
           <ProtectedRoute>
-            <MyCart />
+            <Carts />
           </ProtectedRoute>
         ),
       },

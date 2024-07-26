@@ -5,7 +5,6 @@ export default function ProductCard({ product }) {
   const navigate = useNavigate();
 
   const { id, image, title, category, price } = product;
-
   const formatPrice = (price) => {
     // return new Intl.NumberFormat().format(price);
     return price.toLocaleString("ko-KR");
@@ -14,7 +13,7 @@ export default function ProductCard({ product }) {
   return (
     <li
       onClick={() => navigate(`/product/${id}`, { state: { product } })}
-      className="rounded-sm overflow-hidden shadow-md cursor-pointer"
+      className="rounded-sm overflow-hidden shadow-md cursor-pointer transition-all hover:scale-105"
     >
       <img className="w-full" src={image} alt={title} />
       <div className="flex justify-between p-2 font-semibold">

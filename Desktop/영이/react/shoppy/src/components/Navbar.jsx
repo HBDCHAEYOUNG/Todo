@@ -4,7 +4,8 @@ import { AiTwotoneShop } from "react-icons/ai";
 import { FaPencil } from "react-icons/fa6";
 import User from "./User";
 import Button from "./ui/Button";
-import { useAuthContext } from "./context/AuthContext";
+import { useAuthContext } from "../context/AuthContext";
+import CartStatus from "./CartStatus";
 
 export default function Navbar() {
   const { user, login, logout } = useAuthContext();
@@ -16,7 +17,11 @@ export default function Navbar() {
       </Link>
       <nav className="flex items-center gap-3 text-xl font-semibold ">
         <Link to="/product">Products</Link>
-        {user && <Link to="/carts">Carts</Link>}
+        {user && (
+          <Link to="/carts">
+            <CartStatus />
+          </Link>
+        )}
         {user && user.isAdmin && (
           <Link to="/product/new">
             <FaPencil />
