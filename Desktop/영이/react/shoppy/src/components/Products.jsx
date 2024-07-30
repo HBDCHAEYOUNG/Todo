@@ -1,16 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { getProducts } from "../api/firebase";
 import ProductCard from "./ProductCard";
 import { useAuthContext } from "../context/AuthContext";
+import useProducts from "../hooks/useProducts";
 
 export default function Products() {
-  const { user } = useAuthContext();
   const {
-    isLoading,
-    error,
-    data: products,
-  } = useQuery({ queryKey: ["products"], queryFn: getProducts });
+    productsQuery: { isLoading, error, data: products },
+  } = useProducts();
 
   return (
     <>
