@@ -21,7 +21,8 @@
   }
 
   function printLoginState(state: LoginState) {
-    if ("response" in state) {
+    state.result; // success or fail
+    if (state.result === "success") {
       console.log(`👌${state.response.body}`);
     } else {
       console.log(`😒${state.reason}`);
