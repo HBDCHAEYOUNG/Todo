@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Button from "../components/ui/Button";
 import { addOrUpdateToCart } from "../api/firebase";
-import { useAuthContext } from "../context/AuthContext";
+import useCart from "../hooks/useCart";
 
 export default function ProductDetail() {
-  const { uid } = useAuthContext();
+  const { addOrUpdateItem } = useCart();
   const {
     state: {
       product: { id, image, title, description, category, price, options },
@@ -25,11 +25,11 @@ export default function ProductDetail() {
       options: selected,
       quantity: 1,
     };
-    addOrUpdateToCart(uid, product).then(() => {
-      setSuccess("장바구니에 추가되었습니다.");
-      setTimeout(() => {
-        setSuccess(null);
-      }, 4000);
+    addOrUpdateItem.mutate(product, {
+      onSuccess: () => {
+        setSuccess("장바구니에 추가되었습니다.");
+        setTimeout(() => setSuccess(null), 3000);
+      },
     });
   };
   // return new Intl.NumberFormat().format(price);

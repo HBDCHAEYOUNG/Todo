@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { IoTrash } from "react-icons/io5";
-import { addOrUpdateToCart, removeFromCart } from "../api/firebase";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
+import useCart from "../hooks/useCart";
 
-export default function CartItem({ product, uid }) {
+export default function CartItem({ product }) {
   const { image, title, price, options, quantity, id } = product;
-  console.log(quantity);
-  const [count, setCount] = useState(product);
+
+  const { addOrUpdateItem, removeItem } = useCart();
 
   const formatPrice = (price) => {
     return price.toLocaleString("Ko-KR");
   };
   const handleMinus = () => {
     if (quantity < 2) return;
-    addOrUpdateToCart(uid, { ...product, quantity: quantity - 1 });
+    addOrUpdateItem.mutate({ ...product, quantity: quantity - 1 });
   };
   const handlePlus = () => {
-    addOrUpdateToCart(uid, { ...product, quantity: quantity + 1 });
+    addOrUpdateItem.mutate({ ...product, quantity: quantity + 1 });
   };
   const handleRemove = () => {
-    removeFromCart(uid, id);
+    removeItem.mutate(id);
   };
 
   return (
