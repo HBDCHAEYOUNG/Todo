@@ -8,7 +8,8 @@
   const DAYS_NUM = Object.freeze({ MONDAY: 0, TUESDAY: 2 });
   const dayOfToday = DAYS_NUM.MONDAY;
 
-  // TypeScript
+  // TypeScript enum 비추천
+  type DaysOfWeek = "Monday" | "Tuesdat" | "Wednesday";
   enum Days {
     Monday = 1,
     Tuesday,
@@ -17,4 +18,6 @@
   console.log(Days.Monday);
   const day = Days.Wednesday;
   console.log(day);
+  let dayOfWeek: DaysOfWeek = "Monday";
+  dayOfWeek = "Wednesday";
 }
